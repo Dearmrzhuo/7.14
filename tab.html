@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 300px;
+            height: 200px;
+            border: 1px solid red;
+        }
+        .title{
+            width: 100%;
+            height: 30px;
+            background-color:#ccc;
+        }
+        .title a{
+            float: left;
+            width: 25%;
+            height: 100%;
+            line-height: 30px;
+            text-align: center;
+        }
+        .con{
+            width: 100%;
+            height: 170px;
+            overflow: hidden;
+        }
+        .con div{
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            line-height: 30px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="title">
+            <a href="javascript:;" style="background:red">选项一</a>
+            <a href="javascript:;" style="background:none">选项二</a>
+            <a href="javascript:;" style="background:none">选项三</a>
+            <a href="javascript:;" style="background:none">选项四</a>
+        </div>
+        <div class="con">
+            <div class="con-list" style="display:block;">1111111111</div>
+            <div class="con-list" style="display:none;">2222222222</div>
+            <div class="con-list" style="display:none;">3333333333</div>
+            <div class="con-list" style="display:none;">4444444444</div>
+        </div>
+    </div>
+    <script>
+        var links = document.querySelectorAll(".title a");
+        var lists = document.querySelectorAll(".con-list");
+        for (let i = 0; i <links.length; i++){
+            //links[i]. index = i; 
+            //1 .对象存储属性值
+            // console. Log(links[i]. index);
+            // links[i].onlick = function ( ) {
+            //     console. Log( this. index);
+            //}
+            //2.闭包函数就是让局部变量存储在内存当中
+            // (function(i){
+            //     links[i].onlick=function(){
+            //         alert(i);
+            //     }
+            // })(i);
+            links[i].onclick = function(){
+                for(var j=0; j<lists.length; j++){
+                    lists [j].style.display="none";
+                    links[j].style.background="#ccc" ; 
+                }
+                lists[i].style.display="block";
+                this.style.background="red";
+            }
+        }
+    </script>
+</body>
+</html>
